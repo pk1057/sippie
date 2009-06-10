@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE scenario SYSTEM "sipp.dtd">
+
+<scenario name="Default scenario">
+  <recv request="INVITE"></recv>
+  <send>
+<![CDATA[
+SIP/2.0 100 Trying
+[last_Via:]
+[last_CSeq:]
+[last_To:]
+[last_From:];tag=4F573B99
+[last_Call-ID:]
+
+]]></send>
+  <send>
+<![CDATA[
+SIP/2.0 407 Proxy Authorization Required
+[last_Via:]
+[last_CSeq:]
+[last_To:];tag=SDosc5999-1c83609408babc008b2ca7e4330f97
+[last_From:];tag=4F573B99
+[last_Call-ID:]
+Content-Length: 0
+Proxy-Authenticate: Digest realm="a1.net",domain="sip:ttcnserver@a1.net",nonce="a9354a84ea5508f72abf93d89aafff74",stale=false,qop="auth",algorithm=MD5
+
+]]></send>
+  <recv request="ACK"></recv>
+  <recv request="INVITE"></recv>
+  <send>
+<![CDATA[
+SIP/2.0 100 Trying
+[last_Via:]
+[last_CSeq:]
+[last_To:]
+[last_From:];tag=4F573B99
+[last_Call-ID:]
+
+]]></send>
+  <send>
+<![CDATA[
+SIP/2.0 500 Server Internal Error
+[last_Via:]
+[last_CSeq:]
+[last_To:];tag=SDosc5999-9a71dd8a
+[last_From:];tag=4F573B99
+[last_Call-ID:]
+Content-Length: 0
+Reason: Q.850;cause=3
+
+]]></send>
+  <recv request="ACK"></recv>
+</scenario>
+
