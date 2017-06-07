@@ -6,47 +6,59 @@
   <send>
 <![CDATA[
 SIP/2.0 100 Trying
-[last_Via:]
+
+v: SIP/2.0/UDP 130.10.20.217:5060;branch=z9hG4bK78dc5939
+f: "Sprachaufzeichnung" <sip:recorder@130.10.20.217>;tag=as06b688f8
+t: <sip:2202@10.0.0.100:5060>;tag=7ddipui156
+i: 043a15266d655a172447aac37c46b6d3@130.10.20.217:5060
 [last_CSeq:]
-[last_To:]
-[last_From:];tag=4F573B99
-[last_Call-ID:]
+m: <sip:2202@10.0.0.100:5060>;reg-id=1l: 0
 
 ]]></send>
   <send>
 <![CDATA[
-SIP/2.0 407 Proxy Authorization Required
-[last_Via:]
-[last_CSeq:]
-[last_To:];tag=SDosc5999-1c83609408babc008b2ca7e4330f97
-[last_From:];tag=4F573B99
-[last_Call-ID:]
-Content-Length: 0
-Proxy-Authenticate: Digest realm="a1.net",domain="sip:ttcnserver@a1.net",nonce="a9354a84ea5508f72abf93d89aafff74",stale=false,qop="auth",algorithm=MD5
+SIP/2.0 180 Ringing
 
-]]></send>
-  <recv request="ACK"></recv>
-  <recv request="INVITE"></recv>
-  <send>
-<![CDATA[
-SIP/2.0 100 Trying
-[last_Via:]
+v: SIP/2.0/UDP 130.10.20.217:5060;branch=z9hG4bK78dc5939
+f: "Sprachaufzeichnung" <sip:recorder@130.10.20.217>;tag=as06b688f8
+t: <sip:2202@10.0.0.100:5060>;tag=7ddipui156
+i: 043a15266d655a172447aac37c46b6d3@130.10.20.217:5060
 [last_CSeq:]
-[last_To:]
-[last_From:];tag=4F573B99
-[last_Call-ID:]
+m: <sip:2202@10.0.0.100:5060>;reg-id=1Allow: INVITE, ACK, CANCEL, BYE, REFER, OPTIONS, NOTIFY, SUBSCRIBE, PRACK, MESSAGE, INFO, UPDATE
+Allow-Events: talk, hold, refer, call-info
+l: 0
 
 ]]></send>
   <send>
 <![CDATA[
-SIP/2.0 500 Server Internal Error
-[last_Via:]
+SIP/2.0 200 Ok
+
+v: SIP/2.0/UDP 130.10.20.217:5060;branch=z9hG4bK78dc5939
+f: "Sprachaufzeichnung" <sip:recorder@130.10.20.217>;tag=as06b688f8
+t: <sip:2202@10.0.0.100:5060>;tag=7ddipui156
+i: 043a15266d655a172447aac37c46b6d3@130.10.20.217:5060
 [last_CSeq:]
-[last_To:];tag=SDosc5999-9a71dd8a
-[last_From:];tag=4F573B99
-[last_Call-ID:]
-Content-Length: 0
-Reason: Q.850;cause=3
+m: <sip:2202@10.0.0.100:5060>;reg-id=1User-Agent: snom360/8.4.35
+Allow: INVITE, ACK, CANCEL, BYE, REFER, OPTIONS, NOTIFY, SUBSCRIBE, PRACK, MESSAGE, INFO, UPDATE
+Allow-Events: talk, hold, refer, call-info
+Supported: timer, replaces, from-change
+c: application/sdp
+l: 360
+v=0
+o=root 1959617427 1959617428 IN IP4 10.0.0.100
+s=call
+c=IN IP4 10.0.0.100
+t=0 0
+m=audio 17810 RTP/AVP 9 101a=rtpmap:9 G722/8000
+a=rtpmap:101 telephone-event/8000
+a=fmtp:101 0-16
+a=ptime:20
+a=sendrecv
+m=video 0 RTP/AVP 31 34 98 99a=rtpmap:31 H261/90000
+a=rtpmap:34 H263/90000
+a=rtpmap:98 h263-1998/90000
+a=rtpmap:99 H264/90000
+a=sendrecv
 
 ]]></send>
   <recv request="ACK"></recv>

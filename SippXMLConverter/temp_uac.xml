@@ -4,83 +4,55 @@
 <scenario name="Default scenario">
   <send>
 <![CDATA[
-INVITE sip:+435880138846@[remote_ip] SIP/2.0
+INVITE sip:2202@[remote_ip]:[remote_port] SIP/2.0
 Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
-CSeq: [cseq] INVITETo: <sip:+435880138846@[remote_ip]>
+Max-Forwards: 70
+From: "Sprachaufzeichnung" <sip:recorder@[local_ip]>;tag=[call_number]
+To: <sip:[service]@[remote_ip]:[remote_port]>
+Contact: <sip:recorder@[local_ip]:[local_port]>
+Call-ID: [call_id]
+CSeq: [cseq] INVITEUser-Agent: asteriskdev1
+Date: Thu, 17 Oct 2013 15:14:04 GMT
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH
+Supported: replaces, timer
+P-Asserted-Identity: "Sprachaufzeichnung" <sip:recorder@130.10.20.217>
 Content-Type: application/sdp
-From: "Michael Hirschbichler" <sip:lttuser1@a1.net>;tag=[call_number]
-Call-ID: [call_id]
-Subject: sip:lttuser1@a1.net
 Content-Length: [len]
-User-Agent: kphone/4.2
-Contact: "Michael Hirschbichler" <sip:lttuser1@[local_ip]:[local_port];transport=[transport]>
 
 v=0
-o=username 0 0 IN IP[local_ip_type] [local_ip]
-s=The Funky Flow
+o=root 226987433 226987433 IN IP[local_ip_type] [local_ip]
+s=Asterisk PBX 1.8.23.0
 c=IN IP[media_ip_type] [media_ip]
+b=CT:128
 t=0 0
-m=audio [media_port] RTP/AVP 0 97 8 3a=rtpmap:0 PCMU/8000
-a=rtpmap:3 GSM/8000
+m=audio [media_port] RTP/AVP 9 8 101a=rtpmap:9 G722/8000
 a=rtpmap:8 PCMA/8000
-a=rtpmap:97 iLBC/8000
-a=fmtp:97 mode=30
+a=rtpmap:101 telephone-event/8000
+a=fmtp:101 0-16
+a=ptime:20
+a=sendrecv
+m=video [media_port] RTP/AVP 31 34 98 99a=rtpmap:31 H261/90000
+a=rtpmap:34 H263/90000
+a=rtpmap:98 h263-1998/90000
+a=rtpmap:99 H264/90000
+a=sendrecv
 
 ]]>
 </send>
   <recv response="100"></recv>
-  <recv response="407" auth="true"></recv>
+  <recv response="180"></recv>
+  <recv response="200" rrs="true"></recv>
   <send>
 <![CDATA[
-ACK sip:+435880138846@[remote_ip] SIP/2.0
+ACK [next_url] SIP/2.0
 Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
-CSeq: [cseq] ACKTo: <sip:+435880138846@[remote_ip]>;[peer_tag_param]
-From: "Michael Hirschbichler" <sip:lttuser1@a1.net>;tag=[call_number]
+Max-Forwards: 70
+From: "Sprachaufzeichnung" <sip:recorder@[local_ip]>;tag=[call_number]
+To: <sip:[service]@[remote_ip]:[remote_port]>;[peer_tag_param]
+Contact: <sip:recorder@[local_ip]:[local_port]>
 Call-ID: [call_id]
+CSeq: [cseq] ACKUser-Agent: asteriskdev1
 Content-Length: 0
-User-Agent: kphone/4.2
-Contact: "Michael Hirschbichler" <sip:lttuser1@[local_ip]:[local_port];transport=[transport]>
-
-]]>
-</send>
-  <send>
-<![CDATA[
-INVITE sip:+435880138846@[remote_ip] SIP/2.0
-Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
-CSeq: [cseq] INVITETo: <sip:+435880138846@[remote_ip]>
-[authentication username="abc" password="abc"]Content-Type: application/sdp
-From: "Michael Hirschbichler" <sip:lttuser1@a1.net>;tag=[call_number]
-Call-ID: [call_id]
-Subject: sip:lttuser1@a1.net
-Content-Length: [len]
-User-Agent: kphone/4.2
-Contact: "Michael Hirschbichler" <sip:lttuser1@[local_ip]:[local_port];transport=[transport]>
-
-v=0
-o=username 0 0 IN IP[local_ip_type] [local_ip]
-s=The Funky Flow
-c=IN IP[media_ip_type] [media_ip]
-t=0 0
-m=audio [media_port] RTP/AVP 0 97 8 3a=rtpmap:0 PCMU/8000
-a=rtpmap:3 GSM/8000
-a=rtpmap:8 PCMA/8000
-a=rtpmap:97 iLBC/8000
-a=fmtp:97 mode=30
-
-]]>
-</send>
-  <recv response="100"></recv>
-  <recv response="500"></recv>
-  <send>
-<![CDATA[
-ACK sip:+435880138846@[remote_ip] SIP/2.0
-Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
-CSeq: [cseq] ACKTo: <sip:+435880138846@[remote_ip]>;[peer_tag_param]
-From: "Michael Hirschbichler" <sip:lttuser1@a1.net>;tag=[call_number]
-Call-ID: [call_id]
-Content-Length: 0
-User-Agent: kphone/4.2
-Contact: "Michael Hirschbichler" <sip:lttuser1@[local_ip]:[local_port];transport=[transport]>
 
 ]]>
 </send>
