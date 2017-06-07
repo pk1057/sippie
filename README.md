@@ -11,3 +11,5 @@ If you want to build with maven, you have to run at first <b>mvn initialize</b> 
 
 For deployment use <b>mvn package</b>. 
 Dont forget to include the surrounding files out of the resources directory.
+
+Bachelor Thesis can be found in the original sourceforge project with more details.
